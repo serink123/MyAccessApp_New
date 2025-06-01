@@ -1,0 +1,366 @@
+/* Main container */
+.speech-to-text {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Header section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* Language selector */
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f5f5f7;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.language-selector:hover {
+  background: #e9e9ed;
+}
+
+.language-icon {
+  color: #666;
+}
+
+.language-dropdown {
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  outline: none;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.start-btn {
+  background: #0071e3;
+  color: white;
+}
+
+.start-btn:hover {
+  background: #0077ed;
+  transform: translateY(-1px);
+}
+
+.stop-btn {
+  background: #ff3b30;
+  color: white;
+}
+
+.stop-btn:hover {
+  background: #ff453a;
+  transform: translateY(-1px);
+}
+
+.save-btn {
+  background: #34c759;
+  color: white;
+}
+
+.save-btn:hover {
+  background: #30d158;
+  transform: translateY(-1px);
+}
+
+.clear-btn {
+  background: #ff9500;
+  color: white;
+}
+
+.clear-btn:hover {
+  background: #ff9f0a;
+  transform: translateY(-1px);
+}
+
+.control-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Lyrics container */
+.lyrics-container {
+  background: #f5f5f7;
+  border-radius: 16px;
+  padding: 2rem;
+  min-height: 400px;
+  max-height: 60vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Custom scrollbar */
+.lyrics-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lyrics-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.lyrics-container::-webkit-scrollbar-thumb {
+  background: #c7c7cc;
+  border-radius: 4px;
+}
+
+.lyrics-container::-webkit-scrollbar-thumb:hover {
+  background: #aeaeb2;
+}
+
+/* Lyrics lines */
+.lyrics-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.lyrics-line {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  color: #666;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin: 0 -1rem;
+}
+
+.lyrics-line.active {
+  color: #1a1a1a;
+  font-weight: 600;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* No transcript state */
+.no-transcript {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 300px;
+  text-align: center;
+  color: #86868b;
+}
+
+.mic-icon-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+}
+
+.mic-icon {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  color: #0071e3;
+  background: rgba(0, 122, 255, 0.1);
+  border-radius: 50%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.pulse-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(0, 122, 255, 0.2);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  opacity: 0;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.no-transcript p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.hint {
+  color: #a1a1a6;
+  font-size: 0.95rem !important;
+}
+
+/* Current transcript indicator */
+.current-transcript {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-width: 80%;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.pulse-animation {
+  width: 12px;
+  height: 12px;
+  background: #ff3b30;
+  border-radius: 50%;
+  position: relative;
+}
+
+.pulse-animation::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: rgba(255, 59, 48, 0.5);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+/* Listening indicator */
+.listening-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: #86868b;
+}
+
+/* Error message */
+.error-message {
+  background: #ffebee;
+  color: #d32f2f;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .speech-to-text {
+    padding: 1rem;
+  }
+  
+  .lyrics-line {
+    font-size: 1.25rem;
+  }
+  
+  .controls {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+  }
+  
+  .control-btn {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+/* Animation for new lines */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lyrics-line {
+  animation: fadeIn 0.3s ease-out forwards;
+}

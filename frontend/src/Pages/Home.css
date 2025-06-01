@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* Base styles */
+:root {
+  --bg-dark: #1a1a1a;
+  --accent-brown: #8B3D18;
+  --accent-hover: #6b2f12;
+  --text-light: #ffffff;
+  --text-muted: #b3b3b3;
+}
+
+.home-container {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-light);
+  background-color: var(--bg-dark);
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.btn-primary {
+  background-color: var(--accent-brown);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Outfit', sans-serif;
+  min-width: 200px;
+  text-align: center;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Features Section */
+.features-section {
+  background-color: #222;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.feature-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  min-width: 220px;
+  transition: all 0.3s ease;
+  margin: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Filled button with brown background */
+.feature-btn-filled {
+  background-color: var(--accent-brown);
+  color: var(--text-light);
+  border: 1px solid var(--accent-brown);
+}
+
+.feature-btn-filled:hover {
+  transform: translateY(-5px);
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* Outline button with white border */
+.feature-btn-outline {
+  background-color: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--text-light);
+}
+
+.feature-btn-outline:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+}
+
+.feature-btn .btn-text {
+  color: var(--text-light);
+}
+
+.feature-btn:hover .btn-text {
+  color: var(--text-light) !important;
+}
+
+.btn-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+  
+  .features-section h2 {
+    font-size: 2rem;
+  }
+  
+  .feature-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .feature-btn {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 1.5rem;
+  }
+}

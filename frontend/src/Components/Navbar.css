@@ -1,0 +1,114 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(139, 61, 24, 0.271);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar__logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(255, 254, 253, 0.975);
+}
+
+.navbar__links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__links a {
+  color: rgba(255, 254, 253, 0.975);
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  text-decoration: none;
+}
+
+.navbar__links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #834428;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar__links a:hover::after,
+.navbar__links a:focus::after {
+  width: 100%;
+  background-color: #834428;
+}
+
+.navbar__links a:hover,
+.navbar__links a:focus {
+  color: #834428;
+}
+
+.navbar__hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .navbar__links {
+    display: none;
+    position: fixed;
+    top: 60px; /* Height of the navbar */
+    left: 0;
+    right: 0;
+    background-color: rgba(139, 61, 24, 0.271);
+    flex-direction: column;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(250, 244, 244, 0.1);
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    z-index: 999;
+  }
+
+  .navbar__links.active {
+    display: flex;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .navbar__links li {
+    padding: 0.8rem 2rem;
+    text-align: center;
+  }
+
+  .navbar__hamburger {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .navbar__hamburger:focus {
+    outline: 2px solid #834428;
+    border-radius: 4px;
+  }
+}
